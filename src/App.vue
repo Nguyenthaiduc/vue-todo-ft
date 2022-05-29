@@ -2,6 +2,8 @@
 import { reactive } from "vue";
 
 import TextareaField from './components/molecules/TexrareaField.vue';
+import ImputField from './components/molecules/InputField.vue';
+import InputField from "./components/molecules/InputField.vue";
 
 const options = [
   {
@@ -24,8 +26,14 @@ const testing = reactive({
 <template>
   <TexrareaField  
   id="descTask" 
-  v-model="testing.textAreaVal" 
   label="Description"
+  v-model="testing.textAreaVal" 
+  />
+  <InputField 
+  type="text"
+  id="descTask" 
+  label="Title"
+  v-model="testing.inputVal" 
   />
   {{ testing }}
 </template>
