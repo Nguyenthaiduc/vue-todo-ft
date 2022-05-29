@@ -25,7 +25,7 @@ const testing = reactive({
 </script>
 
 <template>
-  <TexrareaField  
+  <TextareaField  
   id="descTask" 
   label="Description"
   v-model="testing.textAreaVal" 
