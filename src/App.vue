@@ -1,37 +1,33 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
-import AdButton from './components/atoms/AdButton.vue';
-import AdInput from './components/atoms/AdInput.vue';
-import AdTextArea from './components/atoms/AdTextArea.vue';
-import AdText from './components/atoms/AdText.vue';
-import AdSelect from './components/atoms/AdSelect.vue';
+import { reactive } from "vue";
 
+import TextareaField from './components/molecules/TexrareaField.vue';
 
 const options = [
   {
-    label: 'Normal',
-    value: 'Normal'
+    label: "Normal",
+    value: "Normal",
   },
   {
-    label: 'High',
-    value: 'High'
+    label: "High",
+    value: "High",
   },
-]
+];
 
 const testing = reactive({
-  inputVal: '',
-  textAreaVal: '',
-  selectVal: ''
-})
+  inputVal: "",
+  textAreaVal: "",
+  selectVal: "",
+});
 </script>
 
 <template>
-  <AdText tag="h1">New Task</AdText>
-  <AdButton type="button">Testing</AdButton>
-  <AdInput placeholder="Enter something here ..." v-model="testing.inputVal" />
-  <AdTextArea placeholder="Enter description here ..." v-model="testing.textAreaVal"/>
-  <AdSelect :option="options" v-model="testing.selectVal"/>
-  {{testing }}
+  <TexrareaField  
+  id="descTask" 
+  v-model="testing.textAreaVal" 
+  label="Description"
+  />
+  {{ testing }}
 </template>
 
 <style>
