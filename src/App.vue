@@ -4,6 +4,7 @@ import { reactive } from "vue";
 import TextareaField from './components/molecules/TexrareaField.vue';
 import ImputField from './components/molecules/InputField.vue';
 import InputField from "./components/molecules/InputField.vue";
+import SelectField from './components/molecules/SelectField.vue'
 
 const options = [
   {
@@ -31,9 +32,16 @@ const testing = reactive({
   />
   <InputField 
   type="text"
-  id="descTask" 
+  id="titleTask" 
   label="Title"
   v-model="testing.inputVal" 
+  />
+  <SelectField 
+  type="text"
+  id="priorityTask" 
+  label="Priority"
+  :options="options"
+  v-model="testing.selectVal" 
   />
   {{ testing }}
 </template>

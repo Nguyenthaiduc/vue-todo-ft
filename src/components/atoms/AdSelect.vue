@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { PropType } from "vue";
 
-type OptionTypes = {
+export type OptionTypes = {
   label: string;
   value: string;
 };
@@ -25,7 +25,7 @@ defineProps({
   },
   options: {
     type: Array as PropType<OptionTypes[]>,
-    default: true,
+    required: true,
   },
 });
 </script>

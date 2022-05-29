@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import AdSelect from '../atoms/AdSelect.vue';
+import { PropType } from "vue";
+import AdSelect, { OptionTypes } from "../atoms/AdSelect.vue";
 import AdText from "../atoms/AdText.vue";
 
 defineProps({
@@ -27,6 +28,11 @@ defineProps({
     type: String,
     required: false,
   },
+  options: {
+    type: Array as PropType<OptionTypes[]>,
+    required: true,
+    default: [],
+  },
 });
 </script>
 <template>
@@ -37,6 +43,7 @@ defineProps({
       :name="name"
       :class="classes"
       :value="modelValue"
+      :options="options"
       @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value )"
     ></ad-select>
   </div>
