@@ -1,10 +1,19 @@
 <script setup lang="ts">
+import { reactive } from 'vue';
 import AdButton from './components/atoms/AdButton.vue';
+import AdInput from './components/atoms/AdInput.vue';
 
+
+const testing = reactive({
+  inputVal: ''
+})
 </script>
 
 <template>
-  <AdButton type="other">Testing</AdButton>
+  <AdButton type="button">Testing</AdButton>
+  <AdInput placeholder="Enter something here ..." v-model="testing.inputVal" />
+
+  {{testing }}
 </template>
 
 <style>
