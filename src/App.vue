@@ -4,11 +4,24 @@ import AdButton from './components/atoms/AdButton.vue';
 import AdInput from './components/atoms/AdInput.vue';
 import AdTextArea from './components/atoms/AdTextArea.vue';
 import AdText from './components/atoms/AdText.vue';
+import AdSelect from './components/atoms/AdSelect.vue';
 
+
+const options = [
+  {
+    label: 'Normal',
+    value: 'Normal'
+  },
+  {
+    label: 'High',
+    value: 'High'
+  },
+]
 
 const testing = reactive({
   inputVal: '',
   textAreaVal: '',
+  selectVal: ''
 })
 </script>
 
@@ -17,6 +30,7 @@ const testing = reactive({
   <AdButton type="button">Testing</AdButton>
   <AdInput placeholder="Enter something here ..." v-model="testing.inputVal" />
   <AdTextArea placeholder="Enter description here ..." v-model="testing.textAreaVal"/>
+  <AdSelect :option="options" v-model="testing.selectVal"/>
   {{testing }}
 </template>
 
