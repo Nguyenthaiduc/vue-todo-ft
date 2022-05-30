@@ -1,14 +1,68 @@
-import type { AccordionItemsTypes } from "../types"
-import  { onCreateTask, onFetchTasks } from '../services';
+import { reactive } from "@vue/reactivity";
+import { dateInPast } from "../utils";
+import useFlash from "./useFlash";
 
-export const useTask = () => {
-    async function createNewTask(dto: AccordionItemsTypes) {
-        //check title in valid ? show flash message 
-        if(!!dto.title){ // không bằng rỗng , không bằng null , không bằng undefined
-            await onCreateTask(dto)
-            await onFetchTasks();
+import {
+  onCompleteTask,
+  onCreateNewTask,
+  onDeleteTask,
+  onFetchTasks,
+  onUpdateTask,
+} from "../services";
+import type { AccordionItemsTypes } from "../types";
 
-        }
+const state = reactive<{
+  error: string | null;
+  loading: boolean;
+  tasks: AccordionItemsTypes[];
+}>({
+  error: null,
+  loading: false,
+  tasks: [],
+});
+
+const { showFlash } = useFlash();
+
+export default function useTask() {
+  async function completeTask(id: string, status: boolean) {
+    await onCompleteTask(id, status);
+  }
+
+  async function createNewTask(dto: AccordionItemsTypes) {
+    if (dto.title === "") showFlash("Title task is a required field!");
+    else if (dateInPast(new Date(dto.dueDate), new Date()))
+      showFlash("Duedate task is not allow a day in past!");
+    else {
+      await onCreateNewTask(dto);
+      await fetchTasks();
     }
-    return {createNewTask}
+  }
+
+  async function updateTask(id: string, dto: AccordionItemsTypes) {
+    await onUpdateTask(id, dto);
+  }
+
+  async function fetchTasks() {
+    state.loading = true;
+    try {
+      state.tasks = await onFetchTasks();
+    } catch (e: any) {
+      state.error = e;
+    } finally {
+      state.loading = false;
+    }
+  }
+
+  async function deleteTask(id: string) {
+    await onDeleteTask(id);
+  }
+
+  return {
+    completeTask,
+    createNewTask,
+    deleteTask,
+    fetchTasks,
+    updateTask,
+    state,
+  };
 }
