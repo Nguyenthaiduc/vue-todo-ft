@@ -1,28 +1,4 @@
-<p align="center">
-  <img src="https://lh3.googleusercontent.com/25Iw_MbuI23vB9SpAISv8FUoPLRsNxup6q7SSizD1aynFgXjYN6zFXC221UW4DnmnbWLdfv73BWqFVPL1oPtD_4odKSWA95u7rTUsul-yacYkwzdDemyHaw6UOIYJxShkBAM2b5rwBNsTKqafm0E7P7ImBfv7TL9xRZnFDs7pP-n2jNR3uC-Tj9Riyjbe5Y47lFOOHyXO99AsYNMghQ8lqASHhRyL3oZYWqhDIW7U5tezw2QsTowvLhcL1YNCvOm7Z6aOv07vVB_sXQNJU7APe7_nRtd2_wg-KZG-qVRwR7YBxc4UvcEC6I_rjC7b6d86YqCjMFNBi1UAhadLB_GyybP7XVsHDZCz3czRW4z8c_WOIsdivAk97o2Xam6WoUZRnmb_dBZL0v-Oq4m-pBJ4y8TkUv3GH4SKJGwan6STkZYcgog5FTSVk96uc3a4uFINmJaWjK5Oxl_5KgtZjPfOsf10gebkjj-dbqlGR5LO3w9sCS-y2viyMjVu7gOnNRg8Q2zNObaPj_H_BdOt9EBlBtA2A-xA2nr6Y2MPtCFdaDkyZFA1pH9LKC4kISHOSzNs8vgTAg8rPZ5X7IIKV0z7A2g6Y0iD28RXoR8CZY0WhHpad_ycp4TailyIKcEXFFZEKmTBTDHMat4F8QJA2KYCN_SZuAoT2xXiv2VwMRQh8g7ZCDQwHCewoThPvUIZa_-qY-z_VqN070ihZeevBZPeT-dGOxhKB1HUnoy8OfGXZvHQn0mW4uc2aFdiBn9ZYjk2cAdY8O207ASCIG9=s781-no?authuser=0" alt="RHP Team" width="150" />
-</p>
 
-<h1 align="center">Nodejs API Boilerplate</h1>
-
-<p align="center">
-  <a href="https://github.com/trantoan960/nodejs-api-boilerplate">
-    <img src="https://travis-ci.org/w3tecch/express-typescript-boilerplate.svg?branch=master" alt="travis" />
-  </a>
-  <a href="https://github.com/trantoan960/nodejs-api-boilerplate">
-    <img src="https://ci.appveyor.com/api/projects/status/f8e7jdm8v58hcwpq/branch/master?svg=true&passingText=Windows%20passing&pendingText=Windows%20pending&failingText=Windows%20failing" alt="appveyor" />
-  </a>
-  <a href="https://github.com/trantoan960/nodejs-api-boilerplate">
-    <img src="https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="StackShare" />
-  </a>
-</p>
-
-<p align="center">
-  <b>A delightful way to building a Node.js RESTful API Services with beautiful code written in Vanilla Javascript.</b></br>
-  <span>Inspired by the awesome framework & other repo(s) on Github, Gitlab, Gitee,...</span></br>
-  <sub>Made with ❤️ by <a href="https://www.facebook.com/trantoan960">Tran Toan</a></sub>
-</p>
-
-<br />
 
 ## ❯ Why I should be use it
 
