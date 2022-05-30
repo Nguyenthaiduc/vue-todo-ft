@@ -1,58 +1,18 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import TaskForm from './components/organisms/TaskForm.vue';
+import TasksForm from './components/organisms/TasksForm.vue';
+import AdRow from './components/atoms/AdRow.vue';
 
-import TextareaField from './components/molecules/TexrareaField.vue';
-import ImputField from './components/molecules/InputField.vue';
-import InputField from "./components/molecules/InputField.vue";
-import SelectField from './components/molecules/SelectField.vue';
-import CheckboxField from "./components/molecules/CheckboxField.vue";
 
-const options = [
-  {
-    label: "Normal",
-    value: "Normal",
-  },
-  {
-    label: "High",
-    value: "High",
-  },
-];
-
-const testing = reactive({
-  inputVal: "",
-  textAreaVal: "",
-  selectVal: "",
-  selectedVal: false
-});
 </script>
 
 <template>
-  <TextareaField  
-  id="descTask" 
-  label="Description"
-  v-model="testing.textAreaVal" 
-  />
-  <InputField 
-  type="text"
-  id="titleTask" 
-  label="Title"
-  v-model="testing.inputVal" 
-  />
-  <SelectField 
-  type="text"
-  id="priorityTask" 
-  label="Priority"
-  :options="options"
-  v-model="testing.selectVal" 
-  />
-  <CheckboxField 
-  type="checkbox"
-  id="checkedTask" 
-  label="Checked"
-  :options="options"
-  v-model="testing.selectedVal" 
-  />
-  {{ testing }}
+<ad-row cols="2">
+  <!--Task Form-->
+  <ad-row><task-form /></ad-row>
+  <!--Tasks Form-->
+  <ad-row><tasks-form /></ad-row>
+</ad-row>
 </template>
 
 <style>
