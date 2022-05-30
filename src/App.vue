@@ -4,7 +4,8 @@ import { reactive } from "vue";
 import TextareaField from './components/molecules/TexrareaField.vue';
 import ImputField from './components/molecules/InputField.vue';
 import InputField from "./components/molecules/InputField.vue";
-import SelectField from './components/molecules/SelectField.vue'
+import SelectField from './components/molecules/SelectField.vue';
+import CheckboxField from "./components/molecules/CheckboxField.vue";
 
 const options = [
   {
@@ -21,6 +22,7 @@ const testing = reactive({
   inputVal: "",
   textAreaVal: "",
   selectVal: "",
+  selectedVal: false
 });
 </script>
 
@@ -42,6 +44,13 @@ const testing = reactive({
   label="Priority"
   :options="options"
   v-model="testing.selectVal" 
+  />
+  <CheckboxField 
+  type="checkbox"
+  id="checkedTask" 
+  label="Checked"
+  :options="options"
+  v-model="testing.selectedVal" 
   />
   {{ testing }}
 </template>

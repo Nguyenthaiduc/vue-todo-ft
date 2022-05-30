@@ -31,7 +31,7 @@ defineProps({
         required: false,
     },
     modelValue: {
-        type: String,
+        type: [String, Boolean],
         required: false,
     }
 })
@@ -45,7 +45,10 @@ defineProps({
       :placeholder="placeholder"
       :class="classes"
       :value="modelValue"
-      @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value )"
+      @input="
+        $emit('update:modelValue', 
+        type === 'checkbox' ? ($event?.target as HTMLInputElement).checked 
+        : ($event?.target as HTMLInputElement).value )"
       />
 </template>
 

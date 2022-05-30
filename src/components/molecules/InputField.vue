@@ -47,6 +47,7 @@ defineProps({
       :type="type"
       :id="id"
       :name="name"
+      :placeholder="placeholder"
       :class="classes"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value )"
