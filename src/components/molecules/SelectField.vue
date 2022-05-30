@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { PropType } from "vue";
-import AdSelect, { OptionTypes } from "../atoms/AdSelect.vue";
+import AdSelect from "../atoms/AdSelect.vue";
 import AdText from "../atoms/AdText.vue";
 
+export type SelectOptionsTypes = {
+  label: string;
+  value: string;
+};
 defineProps({
   id: {
     type: String,
@@ -29,7 +33,7 @@ defineProps({
     required: false,
   },
   options: {
-    type: Array as PropType<OptionTypes[]>,
+    type: Array as PropType<SelectOptionsTypes[]>,
     required: true,
     default: [],
   },

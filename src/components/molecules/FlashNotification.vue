@@ -8,4 +8,3 @@ const { state } = useFlash();
     <span class="text-danger">{{ state.message }}</span>
   </div>
 </template>
-© 2022 GitHub, Inc.

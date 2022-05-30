@@ -1,50 +1,98 @@
-<script setup lang="ts">
+<script setup="{ emi }" lang="ts">
+import { ref, PropType, watch } from "@vue/runtime-core";
+
+import type { AccordionItemsTypes } from '../../types'
+
+import AdButton from "../atoms/AdButton.vue";
+import AdRow from "../atoms/AdRow.vue";
 import AdText from "../atoms/AdText.vue";
-import InputField from '../molecules/InputField.vue';
-import TextareaField from '../molecules/TexrareaField.vue';
-import SelectField from '../molecules/SelectField.vue';
-import AdButton from '../atoms/AdButton.vue';
+import InputField from "../molecules/InputField.vue";
+import SelectField, { SelectOptionsTypes } from "../molecules/SelectField.vue";
+import TextareaField from "../molecules/TexrareaField.vue";
 
-import { reactive } from 'vue';
-import { useTask } from "../../uses/useTask";
+import { useTask } from '../../uses/useTask'
+import RecordAlert from "../molecules/RecordAlert.vue";
 
-const { createNewTask } = useTask();
+const priorityOptions = ref<SelectOptionsTypes[]>([
+  {
+    label: "Low",
+    value: "low",
+  },
+  {
+    label: "Normal",
+    value: "normal",
+  },
+  {
+    label: "High",
+    value: "high",
+  },
+]);
 
-const options = [
-    {
-        label: 'Low',
-        value: 'Low'
-    },
-    {
-        label: 'Normal',
-        value: 'Normal',
-    },
-    {
-        label: 'High',
-        value: 'High'
-    }
-]
-
-const formData = reactive({
-    title: '',
-    description: '',
-    priority: 'Normal',
+const props = defineProps({
+  item: {
+    type: Object as PropType<AccordionItemsTypes>,
+    required: true
+  },
+  isHasTitle: {
+    type: Boolean,
+    required: false,
+    default: true
+  }
 })
-//handle
-const onSubmit = () => {
-    createNewTask(formData)
+const emits = defineEmits(['reset'])
+
+const { createNewTask, updateTask, state } = useTask()
+
+async function onSubmit() {
+  if (props.item._id) await updateTask(props.item._id, props.item)
+  else {
+    await createNewTask(props.item)
+    emits('reset')
+  }
 }
 </script>
 
 <template>
-<!--submit.prevent đảm bảo không nhảy sang trang khác-->
-<ad-text tag="h1">New Task</ad-text>
-<form @submit.prevent="onSubmit">
-    <input-field v-model="formData.title"/>
-    <textarea-field  label="Description" v-model="formData.description"/>
-    <select-field label="Priority" :options="options" v-model="formData.priority"/>
-    <ad-button type="submit">Create</ad-button>
-
-</form> 
-
+  <ad-row>
+    <ad-text v-if="isHasTitle" class="text-center" tag="h1">New Task</ad-text>
+    <form v-if="item" @submit.prevent="onSubmit" class="grid grid-cols-1 gap-4">
+      <ad-row>
+      <input-field
+        id="titleTask"
+        name="titleTask"
+        placeholder="Add new task..."
+        type="text"
+        v-model="item.title"
+      />
+    </ad-row>
+    <ad-row>
+      <textarea-field id="descTask" name="descTask" label="Description" v-model="item.description" />
+    </ad-row>
+    <ad-row cols="2">
+      <input-field
+        id="dueDateTask"
+        name="dueDateTask"
+        label="Due Date"
+        placeholder="Add new task..."
+        type="date"
+        v-model="item.dueDate"
+      />
+      <select-field
+        id="priorityTask"
+        name="priorityTask"
+        label="Priority"
+        :options="priorityOptions"
+        v-model="item.priority"
+      />
+    </ad-row>
+    <ad-row>
+      <ad-button class="ad-button-primary" type="submit">{{ item._id ? 'Update' : 'Add' }}</ad-button>
+    </ad-row>
+    <ad-row>
+      <record-alert>
+        <span class="text-danger">{{ state.error }}</span>
+      </record-alert>
+    </ad-row>
+    </form>
+  </ad-row>
 </template>
