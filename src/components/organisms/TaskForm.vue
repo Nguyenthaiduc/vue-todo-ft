@@ -10,7 +10,7 @@ import InputField from "../molecules/InputField.vue";
 import SelectField, { SelectOptionsTypes } from "../molecules/SelectField.vue";
 import TextareaField from "../molecules/TexrareaField.vue";
 
-import { useTask } from '../../uses/useTask'
+import useTask from '../../uses/useTask'
 import RecordAlert from "../molecules/RecordAlert.vue";
 
 const priorityOptions = ref<SelectOptionsTypes[]>([
