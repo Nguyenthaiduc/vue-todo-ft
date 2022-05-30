@@ -4,7 +4,11 @@ import InputField from '../molecules/InputField.vue';
 import TextareaField from '../molecules/TexrareaField.vue';
 import SelectField from '../molecules/SelectField.vue';
 import AdButton from '../atoms/AdButton.vue';
+
 import { reactive } from 'vue';
+import { useTask } from "../../uses/useTask";
+
+const { createNewTask } = useTask();
 
 const options = [
     {
@@ -28,7 +32,7 @@ const formData = reactive({
 })
 //handle
 const onSubmit = () => {
-    console.log(formData)
+    createNewTask(formData)
 }
 </script>
 

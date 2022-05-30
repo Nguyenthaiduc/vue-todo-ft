@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const fetchApi = axios.create({
-    baseURL: 'localhost:4000/api/v1',
-    
+    baseURL: "https://todo-list-entrance-testing-api.herokuapp.com/api/v1/tasks/list",
+
 })
