@@ -1,4 +1,4 @@
-export type TaskTypes = {
+export type AccordionItemsTypes  = {
 id?: string;
 _id?: string;
 title: string;
